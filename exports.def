@@ -1,0 +1,6 @@
+EXPORTS
+    InitHelperDll       =   "\\.\GLOBALROOT\SystemRoot\System32\netprofm.dll".InitHelperDll       @1
+    DllCanUnloadNow     =   "\\.\GLOBALROOT\SystemRoot\System32\netprofm.dll".DllCanUnloadNow     @2
+    DllGetClassObject   =   "\\.\GLOBALROOT\SystemRoot\System32\netprofm.dll".DllGetClassObject   @3
+    DllRegisterServer   =   "\\.\GLOBALROOT\SystemRoot\System32\netprofm.dll".DllRegisterServer   @4
+    DllUnregisterServer =   "\\.\GLOBALROOT\SystemRoot\System32\netprofm.dll".DllUnregisterServer @5
