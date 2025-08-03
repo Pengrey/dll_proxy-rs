@@ -1,5 +1,5 @@
 # Cargo commands
-CARGO := cargo +nightly
+CARGO := cargo
 
 # Logger
 define log_info
