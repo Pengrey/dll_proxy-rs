@@ -1,7 +1,4 @@
 # dll_proxy-rs
-Dll proxy in rust
-
-# Concept
 
 Implementation of dll proxying in `windows` using a `.def` file to prevent stub generation and using full dll path to facilitate COM Hijacking.
 
