@@ -1,0 +1,15 @@
+[package]
+name = "payload"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+windows = { version = "0.61.3", features = [
+    "Win32_System_Threading",
+    "Win32_Security"
+] }
+
+
+[lib]
+name = "payload"
+path = "src/payload.rs"
